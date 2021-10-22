@@ -1,0 +1,10 @@
+<%- include("./partials/admin.ejs") %> 
+
+<form style="text-align: center; margin: 5px; padding: 10px;" action="/signin" method="post">
+    <h1>Sign In</h1>
+    <input style="border: none; outline: none; border-radius: 7px; box-shadow: 0 0 3px 0 rgb(0 0 0 / 15%); margin: 6px; padding: 8px; width: 50%;" type="text" name="unm" placeholder="enter id " required><br />
+    <input style="border: none; outline: none; border-radius: 7px; box-shadow: 0 0 3px 0 rgb(0 0 0 / 15%); margin: 6px; padding: 8px; width: 50%;" type="password" name="pwd" placeholder="enter password" required><br />
+    <input style="background-color: #28a745; border: none; outline: none; box-shadow: 0 0 3px 0 rgb(0 0 0 / 15%); width: 20%; height: 40px; " type="submit" name="submit">
+</form>
+
+<%- include("./partials/footer.ejs") %> 
