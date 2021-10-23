@@ -3,17 +3,18 @@ const mongoose = require('mongoose');
 const Product = require('./models/product');
 const User = require('./models/user');
 const multer = require('multer');
-var bodyParser = require('body-parser'); 
+let jwToken = require('jsonwebtoken');
+var bodyParser = require('body-parser');
 require('dotenv').config();
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'public/uploads/')
+        cb(null, 'public/uploads/')
     },
     filename: function (req, file, cb) {
-      cb(null, Date.now()+ file.originalname )
+        cb(null, Date.now() + file.originalname)
     }
-  });
+});
 
 const upload = multer({ storage: storage });
 
@@ -31,46 +32,64 @@ mongoose.connect(dburi, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch((err) => console.log('not connected'));
 
 
-app.set('view engine','ejs');
-app.use(express.static(__dirname+'/public/'));
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public/'));
 
 const apis = require('./controller/apis');
 
 const middleware = require('./controller/middleware');
+
+
+    var tk;
+    var uid;
+
+
 app.get('/', (req, res) => {
 
-    Product.find().sort( { createdAt: -1 } )
+    Product.find().sort({ createdAt: -1 })
         .then((result) => {
-            res.render('index',{ product: result });
+            res.render('index', { product: result });
+            
         })
         .catch((err) => {
             console.log(err);
         });
-   // res.render('index');
+    // res.render('index');
 });
 
 app.get('/product', (req, res) => {
 
-    Product.find().sort( { createdAt: -1 } )
+    Product.find().sort({ createdAt: -1 })
         .then((result) => {
-            res.render('product',{ product: result });
+            res.render('product', { product: result });
         })
         .catch((err) => {
             console.log(err);
         });
 });
 
-app.get('/product/:id',(req, res) => {
+app.get('/product/:id', (req, res) => {
+
     Product.findById(req.params.id)
         .then((result) => {
             res.render('details', { product: result });
         })
         .catch(err => console.log('err'));
-})
+});
+
+
+app.get('/products/:id', (req, res) => {
+
+    Product.findById(req.params.id)
+        .then((result) => {
+            res.render('detailsu', { product: result });
+        })
+        .catch(err => console.log('err'));
+});
 
 
 
-app.post('/addproduct', upload.single('image'), apis.addproduct);
+app.post('/addproduct', upload.single('image'),apis.addproduct);
 
 app.post('/signin', apis.signin);
 
@@ -84,11 +103,11 @@ app.get('/contact', (req, res) => {
     res.render('contact');
 });
 
-app.get('/sign',(req, res) => {
+app.get('/sign', (req, res) => {
     res.render('sign');
 });
 
-app.get('/add',(req, res) => {
+app.get('/add', (req, res) => {
 
     res.render('add');
 });
@@ -100,7 +119,7 @@ app.get('/update/:id', (req, res) => {
             res.render('update', { product: result });
         })
         .catch(err => console.log('error'));
-    
+
 });
 
 app.get('/delete/:id', (req, res) => {
@@ -117,23 +136,23 @@ app.get('/delete/:id', (req, res) => {
 
 app.get('/dash', (req, res) => {
 
-    Product.find().sort( { createdAt: -1 } )
-    .then((result) => {
-        res.render('dash',{ product: result });
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+    Product.find().sort({ createdAt: -1 })
+        .then((result) => {
+            res.render('dash', { product: result });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 
 })
 
 
 
-app.post('/user',(req, res) => {
+app.post('/user', (req, res) => {
 
     const user = new User({
-        name:req.body.unm,
-        password:req.body.pwd
+        name: req.body.unm,
+        password: req.body.pwd
     });
 
     user.save()
@@ -145,12 +164,12 @@ app.post('/user',(req, res) => {
 
 app.get('/popup/:id', (req, res) => {
     Product.findById(req.params.id)
-    .then((result) => {
-        res.render('popup', { product: result });
-    })
-    .catch(err => console.log('error'));
+        .then((result) => {
+            res.render('popup', { product: result });
+        })
+        .catch(err => console.log('error'));
 })
 
-app.listen(port, () =>{
+app.listen(port, () => {
     console.log('listing on 1000');
 });

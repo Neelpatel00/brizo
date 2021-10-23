@@ -9,14 +9,7 @@ module.exports = {
 
         if(token){
 
-            jwToken.verify(token, 'brizo', (err, decode) => {
-                if(err){
-                    res.redirect('/');
-                }
-                else{
-                    next();
-                }
-            })
+            jwToken.verify(token, 'brizo');
         }
     }
 

@@ -15,8 +15,11 @@
           <div class="box">
             <div class="option_container">
               <div class="options">
-                <a href="">
-              
+                <a href="<%= product[i].image %>" target="_blank">
+                  <i class="fas fa-images" aria-hidden="true"></i>
+                </a>
+                <a href='/products/<%= product[i]._id %> '>
+                  <i class="fas fa-info-circle" aria-hidden="true"></i>
                 </a>
             
               </div>
@@ -29,7 +32,7 @@
                 <%= product[i].productname %> 
               </a>
               <h6>
-                <%= product[i].price %> 
+                <%= product[i].size %> 
               </h6>
             </div>
           </div>
@@ -56,7 +59,7 @@
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="images/about-img.jpg" alt="">
+            <img src="images/t3.jpg" alt="" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
           </div>
         </div>
         <div class="col-md-6">
@@ -67,10 +70,7 @@
               </h2>
             </div>
             <p>
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-              in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-              the middle of text. All
+              Tiles are usually thin, square or rectangular coverings manufactured from hard-wearing material such as ceramic, stone, metal, baked clay, or even glass. ... Tiles are often used to form wall and floor coverings, and can range from simple square tiles to complex or mosaics.
             </p>
             <a href="">
               Read More
@@ -103,7 +103,7 @@
                 Safe Delivery
               </h5>
               <p>
-                Nihil molestiae non culpa dignissimos dolorem, facere amet reiciendis esse nulla ut aperiam voluptate ipsum nemo temporibus inventore hic accusantium nesciunt vero iste odit
+                Choose us, and we’ll get your products there.
               </p>
             </div>
           </div>
@@ -118,7 +118,7 @@
                 Safe Payment
               </h5>
               <p>
-                Nihil molestiae non culpa dignissimos dolorem, facere amet reiciendis esse nulla ut aperiam voluptate ipsum nemo temporibus inventore hic accusantium nesciunt vero iste odit
+                ou earn your future. Let us earn your trust.
               </p>
             </div>
           </div>
@@ -133,7 +133,7 @@
                 Satisfied Customers
               </h5>
               <p>
-                Nihil molestiae non culpa dignissimos dolorem, facere amet reiciendis esse nulla ut aperiam voluptate ipsum nemo temporibus inventore hic accusantium nesciunt vero iste odit
+                Come in, Stay Cool,
               </p>
             </div>
           </div>
@@ -169,9 +169,7 @@
                 <input type="text" class="message-box" placeholder="Message" />
               </div>
               <div class="btn_box">
-                <button>
-                  SEND
-                </button>
+                <a href="mailto:patelneel571@gmail.com" class="btn btn-success">Send Email</a>
               </div>
             </form>
           </div>

@@ -118,14 +118,15 @@
                 <div class="card-body">
                     
                     <span class="tag tag-teal"><h1>Product Details</h1></span>
-                     <h1 style="color: #10182f; margin: 2px;"><%= product.productname %> </h1>
-                    <h4 style="color: #10182f; font-size: 1.5rem; margin: 2px;">
+                     <h2 style="color: #10182f; margin: 2px;"><%= product.productname %> <hr></h2>
+                    <!-- <h4 style="color: #10182f; font-size: 1.5rem; margin: 2px;">
                         <%= product.price %>  
-                    </h4>
+                        <hr>
+                    </h4> -->
                     <h4 style="color: #10182f; font-size: 1.5rem; margin: 2px;">
-                        <%= product.size %>
+                        <%= product.size %> <hr>
                     </h4>
-                    <a href="/product/<%= product._id %> " style="text-decoration: none;color: #10182f; margin: 5px; margin-bottom: -10px;"><i class="fas fa-backward" aria-hidden="true"></i>&nbsp; Back</a>
+                    <a href="/products/<%= product._id %> " style="text-decoration: none;color: #10182f; margin: 5px; margin-bottom: -10px;"><i class="fas fa-backward" aria-hidden="true"></i>&nbsp; Back<hr></a>
                 </div>
             </div>
               </body>

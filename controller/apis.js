@@ -53,7 +53,7 @@ module.exports = {
            // console.log(req.file);
             product.save()
                 .then((result) => {
-                    res.send(result);
+                    res.redirect('/dash');
                 })
                 .catch((err) => {
                     console.log('error');
